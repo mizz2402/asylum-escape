@@ -1,36 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using UnityEngine;
 
 public class ChunkGenerator : MonoBehaviour {
-    public GameObject mapChunkPrefab;
-    public Vector3 instantiateStartPosition = new Vector3(0f, 0f, 22f);
-    private Vector3 nextInstantiatePosition;
-    private float instantiateOffset = 5f;
+    public GameObject[] mapChunkPrefabs;
+    public int minChunksCount = 6;
+    private int chunksCount = 0;
+    private Vector3 instantiatePosition = new Vector3(0f, 0f, 22f);
     private GameObject lastSpawnedObject;
+    private float length;
 
-    // Start is called before the first frame update
-    void Start() {
-        nextInstantiatePosition = instantiateStartPosition;
-        //nextInstantiatePosition.z += instantiateOffset;
-        lastSpawnedObject = GameObject.Instantiate(mapChunkPrefab, instantiateStartPosition, Quaternion.identity);
-        Vector3 size = lastSpawnedObject.GetComponent<Collider>().bounds.size;
-        nextInstantiatePosition.z += size.z;
-        Debug.Log(size);
-        Debug.Log(nextInstantiatePosition);
-        //lastSpawnedObject = GameObject.Instantiate(mapChunkPrefab, nextInstantiatePosition, Quaternion.identity);
+    void Awake() {
+        lastSpawnedObject = Instantiate(GetRandomMapChunk(), instantiatePosition, Quaternion.identity);
+        chunksCount++;
     }
 
     private void FixedUpdate() {
-        if (lastSpawnedObject.transform.position.z < instantiateStartPosition.z - instantiateOffset) {
-            Vector3 spawnPosition = nextInstantiatePosition;
-            spawnPosition.z -= instantiateStartPosition.z - lastSpawnedObject.transform.position.z;
-            lastSpawnedObject = GameObject.Instantiate(mapChunkPrefab, spawnPosition, Quaternion.identity);
+        if (chunksCount < minChunksCount || lastSpawnedObject.transform.position.z < instantiatePosition.z - length) {
+            instantiatePosition = lastSpawnedObject.transform.position;
+            length = lastSpawnedObject.GetComponent<Collider>().bounds.size.z;
+            instantiatePosition.z += length;
+            lastSpawnedObject = Instantiate(GetRandomMapChunk(), instantiatePosition, Quaternion.identity);
+            chunksCount++;
         }
     }
 
-    // Update is called once per frame
-    void Update() {
-        
+    private GameObject GetRandomMapChunk() {
+        int rndIndex = Random.Range(0, mapChunkPrefabs.Length - 1);
+        return mapChunkPrefabs[rndIndex];
     }
 }
