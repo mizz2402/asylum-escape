@@ -12,7 +12,7 @@ public class ChunkGenerator : MonoBehaviour {
     private float length;
 
     void Awake() {
-        lastSpawnedObject = Instantiate(GetRandomMapChunk(), instantiatePosition, Quaternion.identity);
+        lastSpawnedObject = Instantiate(mapChunkPrefabs[0], instantiatePosition, Quaternion.identity);
         chunksCount++;
     }
 
@@ -27,7 +27,7 @@ public class ChunkGenerator : MonoBehaviour {
     }
 
     private GameObject GetRandomMapChunk() {
-        int rndIndex = Random.Range(0, mapChunkPrefabs.Length - 1);
+        int rndIndex = Random.Range(0, mapChunkPrefabs.Length);
         return mapChunkPrefabs[rndIndex];
     }
 }
