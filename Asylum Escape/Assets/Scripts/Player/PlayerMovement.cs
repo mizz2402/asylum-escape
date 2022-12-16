@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour {
+    public KeyCode moveLeft = KeyCode.A;
+    public KeyCode moveRight = KeyCode.D;
     public float speed = 10f;
     public float step = 1f;
 
@@ -16,13 +18,13 @@ public class PlayerMovement : MonoBehaviour {
 
     // Update is called once per frame
     /**
-     * First check is key is pressed (left or right arrow) - if so change target position.
+     * First check is key is pressed (moveLeft key or moveRight key) - if so change target position.
      * Then call MovePlayer() method.
      */
     void Update() {
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        if (Input.GetKeyDown(moveLeft))
             targetPosition.x -= step;
-        else if (Input.GetKeyDown(KeyCode.RightArrow))
+        else if (Input.GetKeyDown(moveRight))
             targetPosition.x += step;
 
         MovePlayer();
@@ -37,8 +39,8 @@ public class PlayerMovement : MonoBehaviour {
      * Method results in moving player object left or right.
      */
     void MovePlayer() {
-        if (targetPosition != transform.position && Mathf.Abs(targetPosition.x - transform.position.x) < 0.01f)
-            transform.position = targetPosition;
+        if (targetPosition.x != transform.position.x && Mathf.Abs(targetPosition.x - transform.position.x) < 0.01f)
+            transform.position.Set(targetPosition.x, transform.position.y, transform.position.z); // = targetPosition;
         else
             transform.position = Vector3.Lerp(transform.position, targetPosition, speed * Time.deltaTime);
     }
