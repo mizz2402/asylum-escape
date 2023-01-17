@@ -22,9 +22,9 @@ public class PlayerMovement : MonoBehaviour {
      * Then call MovePlayer() method.
      */
     void Update() {
-        if (Input.GetKeyDown(moveLeft))
+        if (Input.GetKeyDown(moveLeft) && !(targetPosition.x - step < -step))
             targetPosition.x -= step;
-        else if (Input.GetKeyDown(moveRight))
+        else if (Input.GetKeyDown(moveRight) && !(targetPosition.x + step > step))
             targetPosition.x += step;
 
         MovePlayer();
