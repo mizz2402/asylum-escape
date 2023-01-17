@@ -9,11 +9,12 @@ public class PlayerMovement : MonoBehaviour {
     public float step = 1f;
 
     private Vector3 targetPosition;
-    private Vector3 velocity = Vector3.zero;
+    private Animator animator;
     
     // Start is called before the first frame update
     void Start() {
         targetPosition = transform.position;
+        animator= GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -22,11 +23,13 @@ public class PlayerMovement : MonoBehaviour {
      * Then call MovePlayer() method.
      */
     void Update() {
-        if (Input.GetKeyDown(moveLeft) && !(targetPosition.x - step < -step))
+        if (Input.GetKeyDown(moveLeft) && !(targetPosition.x - step < -step)) {
             targetPosition.x -= step;
-        else if (Input.GetKeyDown(moveRight) && !(targetPosition.x + step > step))
+            animator.SetBool("Left", true);
+        } else if (Input.GetKeyDown(moveRight) && !(targetPosition.x + step > step)) {
             targetPosition.x += step;
-
+            animator.SetBool("Right", true);
+        }
         MovePlayer();
     }
 
@@ -39,9 +42,15 @@ public class PlayerMovement : MonoBehaviour {
      * Method results in moving player object left or right.
      */
     void MovePlayer() {
-        if (targetPosition.x != transform.position.x && Mathf.Abs(targetPosition.x - transform.position.x) < 0.01f)
-            transform.position.Set(targetPosition.x, transform.position.y, transform.position.z); // = targetPosition;
-        else
+        float diff = Mathf.Abs(targetPosition.x - transform.position.x);
+        if (targetPosition.x != transform.position.x && diff < 0.15f)
+            transform.position = targetPosition;
+        else {
             transform.position = Vector3.Lerp(transform.position, targetPosition, speed * Time.deltaTime);
+            if (diff < 0.5f) {
+                animator.SetBool("Left", false);
+                animator.SetBool("Right", false);
+            }
+        }
     }
 }
