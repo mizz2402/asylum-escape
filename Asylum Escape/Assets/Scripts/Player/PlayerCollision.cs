@@ -14,11 +14,16 @@ public class PlayerCollision : MonoBehaviour {
     }
 
     private void OnCollisionEnter(Collision collision) {
-        
+        if (collision.collider.gameObject.tag == "obstacle") {
+            Debug.Log("Collision");
+            gameObject.GetComponent<PlayerMovement>().enabled = false;
+            gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+        }
     }
 
     private void OnTriggerEnter(Collider other) {
-        if (other.gameObject.tag == "Obstacle") {
+        if (other.gameObject.tag == "obstacle") {
+            Debug.Log("Trigger");
             gameObject.GetComponent<PlayerMovement>().enabled = false;
             gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
         }
