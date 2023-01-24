@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour {
     // Start is called before the first frame update
     void Start() {
         targetPosition = transform.position;
-        animator= GetComponent<Animator>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -29,6 +29,8 @@ public class PlayerMovement : MonoBehaviour {
         } else if (Input.GetKeyDown(moveRight) && !(targetPosition.x + step > step)) {
             targetPosition.x += step;
             animator.SetBool("Right", true);
+        } else if (Input.GetKeyDown(KeyCode.Space)) {
+            animator.SetTrigger("Jump");
         }
         MovePlayer();
     }
@@ -44,9 +46,9 @@ public class PlayerMovement : MonoBehaviour {
     void MovePlayer() {
         float diff = Mathf.Abs(targetPosition.x - transform.position.x);
         if (targetPosition.x != transform.position.x && diff < 0.15f)
-            transform.position = targetPosition;
+            transform.position = new Vector3(targetPosition.x, transform.position.y, 0f);
         else {
-            transform.position = Vector3.Lerp(transform.position, targetPosition, speed * Time.deltaTime);
+            transform.position = Vector3.Lerp(transform.position, new Vector3(targetPosition.x, transform.position.y, 0f), speed * Time.deltaTime);
             if (diff < 0.5f) {
                 animator.SetBool("Left", false);
                 animator.SetBool("Right", false);
