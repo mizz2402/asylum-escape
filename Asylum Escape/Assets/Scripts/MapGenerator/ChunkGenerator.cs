@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Drawing;
 using UnityEngine;
 
 public class ChunkGenerator : MonoBehaviour {
@@ -11,6 +8,7 @@ public class ChunkGenerator : MonoBehaviour {
     private int chunksCount = 0;
     private Vector3 instantiatePosition = new Vector3(0f, 0f, 22f);
     private GameObject lastSpawnedObject;
+    private int lastSpawnedObjectIndex = 0;
     private float length;
 
     void Awake() {
@@ -31,7 +29,15 @@ public class ChunkGenerator : MonoBehaviour {
     }
 
     private GameObject GetRandomMapChunk() {
-        int rndIndex = Random.Range(0, mapChunkPrefabs.Length);
+        if (mapChunkPrefabs.Length <= 2)
+            return mapChunkPrefabs[mapChunkPrefabs.Length - 1];
+
+        int rndIndex;
+        do
+            rndIndex = Random.Range(1, mapChunkPrefabs.Length);
+        while (rndIndex == lastSpawnedObjectIndex);
+        lastSpawnedObjectIndex = rndIndex;
+
         return mapChunkPrefabs[rndIndex];
     }
 
