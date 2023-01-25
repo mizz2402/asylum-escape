@@ -23,7 +23,7 @@ public class ChunkGenerator : MonoBehaviour {
             instantiatePosition = lastSpawnedObject.transform.position;
             length = lastSpawnedObject.GetComponent<Collider>().bounds.size.z;
             instantiatePosition.z += length;
-            lastSpawnedObject = Instantiate(GetRandomMapChunk(), instantiatePosition, Quaternion.identity);
+            lastSpawnedObject = Instantiate(GetRandomMapChunk(), instantiatePosition, GetRandomQuaternion());
             chunksCount++;
         }
         Time.timeScale = gameSpeed;
@@ -33,5 +33,12 @@ public class ChunkGenerator : MonoBehaviour {
     private GameObject GetRandomMapChunk() {
         int rndIndex = Random.Range(0, mapChunkPrefabs.Length);
         return mapChunkPrefabs[rndIndex];
+    }
+
+    private Quaternion GetRandomQuaternion() {
+        float rndIndex = Random.Range(0f, 1f);
+        if (rndIndex < 0.5f)
+            return Quaternion.Euler(0f, 180f, 0f);
+        return Quaternion.identity;
     }
 }
