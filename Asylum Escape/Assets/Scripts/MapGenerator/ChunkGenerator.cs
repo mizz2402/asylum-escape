@@ -27,7 +27,7 @@ public class ChunkGenerator : MonoBehaviour {
     }
 
     private GameObject GetRandomMapChunk() {
-        int rndIndex = Random.Range(0, mapChunkPrefabs.Length);
+        int rndIndex = Random.Range(1, mapChunkPrefabs.Length);
         return mapChunkPrefabs[rndIndex];
     }
 
