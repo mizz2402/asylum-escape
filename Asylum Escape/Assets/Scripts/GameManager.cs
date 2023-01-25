@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour {
     private float score = 0f;
     public int pointsPerSecond = 100;
 
-    private float sanity = 1f;
+    public float sanity = 1f;
     public float sanityDropPerSecond = 0.1f;
 
     // Start is called before the first frame update
@@ -37,9 +37,11 @@ public class GameManager : MonoBehaviour {
         if (sanity < 0f)
             sanity = 0f;
         else if (sanity == 0f) {
-            RenderSettings.reflectionIntensity = 0f;
-        } else
+            TurnLightsOnOff(false);
+        } else {
             sanity -= Time.deltaTime * sanityDropPerSecond;
+            TurnLightsOnOff(true);
+        }
     }
 
     void UpdateGameSpeed(float maxGameSpeed) {
@@ -50,6 +52,14 @@ public class GameManager : MonoBehaviour {
                 gameSpeed = maxGameSpeed;
         } else if (gameSpeed > maxGameSpeed)
             gameSpeed -= Time.deltaTime * gameSpeedStep * 10;
+    }
+
+    void TurnLightsOnOff(bool enabled) {
+        foreach (Light light in FindObjectsOfType<Light>()) {
+            if (light.type == LightType.Point) {
+                light.enabled = enabled;
+            }
+        }
     }
 
 }

@@ -571,6 +571,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1474221562}
   - component: {fileID: 1474221561}
+  - component: {fileID: 1474221563}
   m_Layer: 0
   m_Name: _GameManager
   m_TagString: Untagged
@@ -590,8 +591,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a502642affaeb714dba81a7712ea7449, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameSpeed: 1
-  music: {fileID: 39278011}
   mapChunkPrefabs:
   - {fileID: 1737779982543841777, guid: c34d1d32019503448ac0a5e8661936f5, type: 3}
   - {fileID: 6323110642140581673, guid: 0a808790c5f332b4cac9792739efc74d, type: 3}
@@ -616,3 +615,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1474221563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1474221560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f02e584f45356747bb28790fac323b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameSpeedStep: 0.01
+  minGameSpeed: 0.8
+  maxGameSpeed: 1.3
+  maxInsaneGameSpeed: 1.5
+  music: {fileID: 39278011}
+  pointsPerSecond: 100
+  sanity: 1
+  sanityDropPerSecond: 0.1
