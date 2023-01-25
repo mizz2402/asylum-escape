@@ -600,6 +600,7 @@ MonoBehaviour:
   - {fileID: 3507250375094787148, guid: 66ea4ef708fbcd44e8fddd19f138788b, type: 3}
   - {fileID: 2246802006395199093, guid: 81abcfa7407f78f46ac4b4940cb22b0d, type: 3}
   - {fileID: 3892804702595004928, guid: ff5869d6c5dc1894fbd6e4d9da361fdd, type: 3}
+  - {fileID: 36144987476285144, guid: b400ac2a7b613494488201c13b16c859, type: 3}
   minChunksCount: 6
 --- !u!4 &1474221562
 Transform:
