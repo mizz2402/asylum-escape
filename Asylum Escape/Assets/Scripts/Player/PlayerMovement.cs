@@ -3,28 +3,35 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour {
+    public KeyCode moveLeft = KeyCode.A;
+    public KeyCode moveRight = KeyCode.D;
     public float speed = 10f;
     public float step = 1f;
 
     private Vector3 targetPosition;
-    private Vector3 velocity = Vector3.zero;
+    private Animator animator;
     
     // Start is called before the first frame update
     void Start() {
         targetPosition = transform.position;
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     /**
-     * First check is key is pressed (left or right arrow) - if so change target position.
+     * First check is key is pressed (moveLeft key or moveRight key) - if so change target position.
      * Then call MovePlayer() method.
      */
     void Update() {
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        if (Input.GetKeyDown(moveLeft) && !(targetPosition.x - step < -step)) {
             targetPosition.x -= step;
-        else if (Input.GetKeyDown(KeyCode.RightArrow))
+            animator.SetBool("Left", true);
+        } else if (Input.GetKeyDown(moveRight) && !(targetPosition.x + step > step)) {
             targetPosition.x += step;
-
+            animator.SetBool("Right", true);
+        } else if (Input.GetKeyDown(KeyCode.Space)) {
+            animator.SetTrigger("Jump");
+        }
         MovePlayer();
     }
 
@@ -37,9 +44,15 @@ public class PlayerMovement : MonoBehaviour {
      * Method results in moving player object left or right.
      */
     void MovePlayer() {
-        if (targetPosition != transform.position && Mathf.Abs(targetPosition.x - transform.position.x) < 0.01f)
-            transform.position = targetPosition;
-        else
-            transform.position = Vector3.Lerp(transform.position, targetPosition, speed * Time.deltaTime);
+        float diff = Mathf.Abs(targetPosition.x - transform.position.x);
+        if (targetPosition.x != transform.position.x && diff < 0.15f)
+            transform.position = new Vector3(targetPosition.x, transform.position.y, 0f);
+        else {
+            transform.position = Vector3.Lerp(transform.position, new Vector3(targetPosition.x, transform.position.y, 0f), speed * Time.deltaTime);
+            if (diff < 0.5f) {
+                animator.SetBool("Left", false);
+                animator.SetBool("Right", false);
+            }
+        }
     }
 }

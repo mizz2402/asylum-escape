@@ -4,6 +4,8 @@ using System.Drawing;
 using UnityEngine;
 
 public class ChunkGenerator : MonoBehaviour {
+    public float gameSpeed = 1f;
+    public AudioSource music;
     public GameObject[] mapChunkPrefabs;
     public int minChunksCount = 6;
     private int chunksCount = 0;
@@ -24,6 +26,8 @@ public class ChunkGenerator : MonoBehaviour {
             lastSpawnedObject = Instantiate(GetRandomMapChunk(), instantiatePosition, Quaternion.identity);
             chunksCount++;
         }
+        Time.timeScale = gameSpeed;
+        music.pitch = gameSpeed;
     }
 
     private GameObject GetRandomMapChunk() {
