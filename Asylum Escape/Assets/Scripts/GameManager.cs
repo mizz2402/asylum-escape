@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour {
 
     private float sanity = 1f;
     public float sanityDropPerSecond = 0.1f;
+    public float sanityIncresedByPill = 0.2f;
     public Slider sanityBar;
 
     public GameObject gameOverPanel;
@@ -132,5 +133,9 @@ public class GameManager : MonoBehaviour {
 
     public void SetPlayerName(string name) {
         playerName = name.Trim();
+    }
+
+    public void AddSanity() {
+        sanity += sanityIncresedByPill;
     }
 }

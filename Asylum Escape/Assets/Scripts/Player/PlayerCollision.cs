@@ -24,6 +24,9 @@ public class PlayerCollision : MonoBehaviour {
             }
 
             gameManager.GameOver();
+        } else if (other.gameObject.tag == "Pill") {
+            Destroy(other.gameObject);
+            gameManager.AddSanity();
         }
     }
 }
