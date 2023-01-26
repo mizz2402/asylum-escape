@@ -10,19 +10,19 @@ public class MainMenu : MonoBehaviour
 
     void Start() {
         string name = PlayerPrefs.GetString("Name1", "..........");
-        int score = PlayerPrefs.GetInt("Score1", 0);
+        float score = PlayerPrefs.GetFloat("Score1", 0f);
         leaderboardContent.text = leaderboardContent.text.Replace("$name1", name);
-        leaderboardContent.text = leaderboardContent.text.Replace("$score1", score.ToString());
+        leaderboardContent.text = leaderboardContent.text.Replace("$score1", score.ToString("#,##0"));
 
         name = PlayerPrefs.GetString("Name2", "..........");
-        score = PlayerPrefs.GetInt("Score2", 0);
+        score = PlayerPrefs.GetFloat("Score2", 0f);
         leaderboardContent.text = leaderboardContent.text.Replace("$name2", name);
-        leaderboardContent.text = leaderboardContent.text.Replace("$score2", score.ToString());
+        leaderboardContent.text = leaderboardContent.text.Replace("$score2", score.ToString("#,##0"));
 
         name = PlayerPrefs.GetString("Name3", "..........");
-        score = PlayerPrefs.GetInt("Score3", 0);
+        score = PlayerPrefs.GetFloat("Score3", 0f);
         leaderboardContent.text = leaderboardContent.text.Replace("$name3", name);
-        leaderboardContent.text = leaderboardContent.text.Replace("$score3", score.ToString());
+        leaderboardContent.text = leaderboardContent.text.Replace("$score3", score.ToString("#,##0"));
 
         volumeSlider.value = PlayerPrefs.GetFloat("Volume", 1f);
     }

@@ -13,7 +13,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1737779982543841777, guid: c34d1d32019503448ac0a5e8661936f5, type: 3}
       propertyPath: m_TagString
-      value: obstacle
+      value: Chunk
       objectReference: {fileID: 0}
     - target: {fileID: 2727907477765073605, guid: c34d1d32019503448ac0a5e8661936f5, type: 3}
       propertyPath: m_RootOrder
