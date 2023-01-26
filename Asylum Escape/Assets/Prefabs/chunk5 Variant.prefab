@@ -13,7 +13,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1737779982543841777, guid: c34d1d32019503448ac0a5e8661936f5, type: 3}
       propertyPath: m_TagString
-      value: obstacle
+      value: Chunk
       objectReference: {fileID: 0}
     - target: {fileID: 2727907477765073605, guid: c34d1d32019503448ac0a5e8661936f5, type: 3}
       propertyPath: m_RootOrder
@@ -518,6 +518,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.99466026, y: 0.870479, z: 1.9626274}
   m_Center: {x: 0.022643005, y: 0.40505052, z: -0.00206551}
+--- !u!114 &5199179759735531300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2933050417499458428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e4ef5f25817e534aa1db525e40a807b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _clip: {fileID: 8300000, guid: 77bfce0c299a43b44b1f413e5d978879, type: 3}
 --- !u!1001 &2932287619909347089
 PrefabInstance:
   m_ObjectHideFlags: 0
