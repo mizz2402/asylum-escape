@@ -325,7 +325,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &49971955
 GameObject:
@@ -908,9 +908,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 180575145}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.0434783, z: 0.25652173}
-  m_LocalScale: {x: 0.4347826, y: 0.4347826, z: 0.4347826}
+  m_LocalRotation: {x: 0.016216502, y: 0.7520921, z: 0.6585983, w: -0.018518565}
+  m_LocalPosition: {x: 0.000015356112, y: 1.0300605, z: 0.0003159201}
+  m_LocalScale: {x: 4.734591, y: 4.7345905, z: 4.7345896}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 519946639}
@@ -1016,7 +1016,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4000011334802642, guid: c72269396f82e214b9e099c930c36173, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4000011334802642, guid: c72269396f82e214b9e099c930c36173, type: 3}
       propertyPath: m_LocalScale.x
@@ -2090,8 +2090,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.08715578, y: 0, z: 0, w: 0.9961947}
-  m_LocalPosition: {x: 0, y: 5, z: -8}
+  m_LocalRotation: {x: 0.12528548, y: 0.0056319647, z: -0.0029189996, w: 0.9921005}
+  m_LocalPosition: {x: -0.0000000055484595, y: 6.55, z: -7.73}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2804,6 +2804,8 @@ MonoBehaviour:
   - {fileID: 2246802006395199093, guid: 81abcfa7407f78f46ac4b4940cb22b0d, type: 3}
   - {fileID: 3892804702595004928, guid: ff5869d6c5dc1894fbd6e4d9da361fdd, type: 3}
   - {fileID: 36144987476285144, guid: b400ac2a7b613494488201c13b16c859, type: 3}
+  - {fileID: 8017948488840241484, guid: 8004df99c8899ed4db417bf5f80afeaa, type: 3}
+  - {fileID: 1587199443439577552, guid: c59e58d1549c74944a343f499f1d4653, type: 3}
   minChunksCount: 6
 --- !u!4 &1474221562
 Transform:
