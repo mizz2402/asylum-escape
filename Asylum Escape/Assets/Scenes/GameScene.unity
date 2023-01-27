@@ -146,6 +146,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: BackToMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 4634645062969713833, guid: 15569f189c0ba5e4eb894366da9d1c2e, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1474221563}
+    - target: {fileID: 4634645062969713833, guid: 15569f189c0ba5e4eb894366da9d1c2e, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetPlayerName
+      objectReference: {fileID: 0}
     - target: {fileID: 4634645063353815195, guid: 15569f189c0ba5e4eb894366da9d1c2e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -958,6 +966,7 @@ MonoBehaviour:
   pointsPerSecond: 100
   scoreValue: {fileID: 1029042596}
   sanityDropPerSecond: 0.1
+  sanityIncresedByPill: 0.2
   sanityBar: {fileID: 1425595683}
   gameOverPanel: {fileID: 1447080601}
   topScorePanel: {fileID: 1337496370}
