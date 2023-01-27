@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class PlayerCollision : MonoBehaviour {
     // Start is called before the first frame update
+
+    public GameManager gameManager;
+
     void Start() {
 
     }
@@ -14,7 +17,16 @@ public class PlayerCollision : MonoBehaviour {
     private void OnTriggerEnter(Collider other) {
         if (other.gameObject.tag == "Obstacle") {
             Debug.Log("Trigger");
-            //gameObject.GetComponent<PlayerMovement>().enabled = false;
+            gameObject.GetComponent<PlayerMovement>().enabled = false;
+
+            foreach (GameObject chunk in GameObject.FindGameObjectsWithTag("Chunk")) {
+                chunk.GetComponent<ChunkMovement>().enabled = false;
+            }
+
+            gameManager.GameOver();
+        } else if (other.gameObject.tag == "Pill") {
+            Destroy(other.gameObject);
+            gameManager.AddSanity();
         }
     }
 }
