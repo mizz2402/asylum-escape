@@ -92,9 +92,9 @@ public class GameManager : MonoBehaviour {
 
     // value 0 means score is below top 3
     int GetScorePlacement() {
-        if (score > PlayerPrefs.GetFloat("Score3", 0f)) {
-            if (score > PlayerPrefs.GetFloat("Score2", 0f)) {
-                if (score > PlayerPrefs.GetFloat("Score1", 0f))
+        if (score >= PlayerPrefs.GetFloat("Score3", 0f)) {
+            if (score >= PlayerPrefs.GetFloat("Score2", 0f)) {
+                if (score >= PlayerPrefs.GetFloat("Score1", 0f))
                     return 1;
                 return 2;
             }
@@ -137,5 +137,7 @@ public class GameManager : MonoBehaviour {
 
     public void AddSanity() {
         sanity += sanityIncresedByPill;
+        if (sanity > 1f)
+            sanity = 1f;
     }
 }
