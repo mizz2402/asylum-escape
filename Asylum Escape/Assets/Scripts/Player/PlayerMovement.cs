@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour {
@@ -54,5 +52,9 @@ public class PlayerMovement : MonoBehaviour {
                 animator.SetBool("Right", false);
             }
         }
+    }
+
+    private void OnDisable() {
+        animator.SetTrigger("GameOver");
     }
 }
